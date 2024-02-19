@@ -11,7 +11,7 @@ export const Navbar = () => {
         >
           <img
             src={process.env.NEXT_PUBLIC_FULL_LOGO_URL}
-            className="h-8 mt-4"
+            className="h-8 mt-8"
           />
         </a>
       )}

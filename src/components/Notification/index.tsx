@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import toast, { Toast, ToastOptions } from "react-hot-toast";
 import { HiX } from "react-icons/hi";
-import clsx from "clsx";
 import { Transition } from "../Transition";
 import { MediaObject, MediaObjectProps } from "../MediaObject";
 import { Button } from "../Button";
@@ -17,7 +16,7 @@ export const renderNotification = (
 
 export function Notification({ t, ...mediaObjectProps }: NotificationProps) {
   const notificationClassName =
-    "max-w-md w-full bg-dark-light rounded-lg pointer-events-auto flex justify-between items-center z-50 border border-dark-accent p-4 space-x-2";
+    "max-w-md w-full bg-light-light dark:bg-dark-light rounded-lg pointer-events-auto flex justify-between items-center z-50 border shadow-xl dark:shadow-none dark:border-dark-accent p-4 space-x-2";
 
   return (
     <Transition type="scaleUp" show={t.visible || false} appear as={Fragment}>

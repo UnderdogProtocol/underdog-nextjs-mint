@@ -15,7 +15,7 @@ export const Layout = ({ children }: LayoutProps) => {
         <title>{process.env.NEXT_PUBLIC_APP_NAME}</title>
       </Head>
 
-      <Container className="h-screen">
+      <Container className="min-h-screen">
         <Navbar />
         {children}
       </Container>

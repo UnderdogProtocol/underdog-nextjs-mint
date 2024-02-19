@@ -17,14 +17,15 @@ const main = async () => {
 
   const project = response.data;
 
+  console.log(project)
+
   const metadataDir = fs
     .readdirSync("./scripts/metadata")
     .sort((a, b) => parseInt(a.split(".")[0]) - parseInt(b.split(".")[0]))
-    .slice(2, 100);
 
-  const batches = _.chunk(metadataDir, 98);
+  const batches = _.chunk(metadataDir, 99);
 
-  for (const batch of batches.slice(0, 1)) {
+  for (const batch of batches) {
     const body = batch.map((file) => {
       const data = JSON.parse(
         fs.readFileSync(`./scripts/metadata/${file}`, "utf-8")
@@ -41,15 +42,15 @@ const main = async () => {
     console.log("First: ", body[0]);
     console.log("Last: ", body[body.length - 1]);
 
-    // await underdog.post(`/v2/projects/${projectId}/nfts/batch`, {
-    //   name: project.name,
-    //   image: project.image,
-    //   symbol: project.symbol,
-    //   description: project.description,
-    //   externalUrl: project.externalUrl,
-    //   receiverAddress: config.escrowAddress,
-    //   batch: body,
-    // });
+    await underdog.post(`/v2/projects/${projectId}/nfts/batch`, {
+      name: project.name,
+      image: project.image,
+      symbol: project.symbol,
+      description: project.description,
+      externalUrl: project.externalUrl,
+      receiverAddress: config.escrowAddress,
+      batch: body,
+    });
   }
 };
 
