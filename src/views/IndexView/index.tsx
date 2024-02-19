@@ -63,14 +63,18 @@ export const IndexView: React.FC = () => {
           <div className="space-y-2">
             <MediaObject
               title={`${price} SOL`}
-              description={`${
-                total - (escrowedAssetsData?.length || 0)
-              } / ${total}`}
+              description={
+                !escrowedAssetsData
+                  ? "Loading..."
+                  : `${total - escrowedAssetsData.length} / ${total}`
+              }
             />
 
             <ProgressBar
               total={total}
-              current={total - (escrowedAssetsData?.length || 0)}
+              current={
+                escrowedAssetsData ? total - escrowedAssetsData.length : 0
+              }
             />
           </div>
 
